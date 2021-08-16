@@ -112,6 +112,11 @@ export default {
 </script>
 
 <style lang="scss">
+#app {
+  max-width: 375px;
+  margin: 0 auto;
+  border: 1px solid #ececec;
+}
 .swiper-slide-title {
   width: auto !important;
   .tab-name {
