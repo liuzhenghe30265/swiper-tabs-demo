@@ -1,6 +1,8 @@
 <template>
-  <div id="app">
-    <Swiper ref="swiperTitle"
+  <div
+    id="app">
+    <Swiper
+      ref="swiperTitle"
       class="swiper-title"
       :options="swiperOptionTitle"
       :auto-update="true"
@@ -13,14 +15,20 @@
         :key="'name' + index"
         :iname="item.name"
         class="swiper-slide-title">
-        <div class="tab-name"
+        <div
+          class="tab-name"
           :class="{ active: index === swiperActiveIndex }"
           @click="handleSlidClickFun(index)">
           {{ item.name }}
         </div>
       </swiper-slide>
+      <div
+        class="swiper-scrollbar"
+        slot="scrollbar">
+      </div>
     </Swiper>
-    <Swiper ref="swiperContent"
+    <Swiper
+      ref="swiperContent"
       class="swiper-content"
       :options="swiperOptionContent"
       :auto-update="true"
@@ -46,7 +54,7 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  data() {
+  data () {
     const _this = this
     return {
       swiperActiveIndex: 0,
@@ -63,6 +71,13 @@ export default {
       swiperOptionTitle: {
         slidesPerView: 'auto',
         freeMode: true,
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          hide: false,
+          draggable: false,
+          snapOnRelease: true,
+          dragSize: 20,
+        }
       },
       tabListData: [
         {
@@ -90,21 +105,21 @@ export default {
     }
   },
   computed: {
-    swiperContent() {
+    swiperContent () {
       return this.$refs.swiperContent.$el.swiper
     },
-    swiperTitle() {
+    swiperTitle () {
       return this.$refs.swiperTitle.$el.swiper
     },
   },
-  mounted() { },
+  mounted () { },
   methods: {
-    handleSlideToFun(index) {
+    handleSlideToFun (index) {
       this.swiperActiveIndex = index
       this.swiperContent.slideTo(index, 500, false)
       this.swiperTitle.slideTo(index, 500, false)
     },
-    handleSlidClickFun(index) {
+    handleSlidClickFun (index) {
       this.handleSlideToFun(index)
     },
   }
